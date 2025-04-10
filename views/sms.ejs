@@ -16,18 +16,19 @@
             <button id="delete-btn" class="back-btn">Delete</button>
         </div>
 
-        <% if (smsData.length > 0) { %>
-            <% smsData.forEach(sms => { %>
-                <div class="sms-card" data-id="<%= sms.uniqueid %>">
-                    <h3>Sender: <%= sms.sender %></h3>
-                    <p><strong>Title:</strong> <%= sms.title %></p>
-                    <p><strong>Body:</strong> <%= sms.body %></p>
-                    <p class="timestamp"><strong>Timestamp:</strong> <%= sms.timestamp %></p>
-                </div>
-            <% }); %>
-        <% } else { %>
-            <p class="no-sms">No SMS found for this device.</p>
-        <% } %>
+      <% if (smsData.length > 0) { %>
+    <% smsData.slice().reverse().forEach(sms => { %>
+        <div class="sms-card" data-id="<%= sms.uniqueid %>">
+            <h3>Sender: <%= sms.sender %></h3>
+            <p><strong>Title:</strong> <%= sms.title %></p>
+            <p><strong>Body:</strong> <%= sms.body %></p>
+            <p class="timestamp"><strong>Timestamp:</strong> <%= sms.timestamp %></p>
+        </div>
+    <% }); %>
+<% } else { %>
+    <p class="no-sms">No SMS found for this device.</p>
+<% } %>
+
     </div>
 
     <script src="/js/delete.js"></script>
